@@ -37,6 +37,11 @@
 
     <!-- Root CSS -->
     <link rel="stylesheet" href="./resources/css/style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Title your page -->
     <title>
@@ -184,6 +189,26 @@
 
       <!-- END OF CONTAINER -->
     </div>
+    <div class="modal" id="modal-1" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content text-center">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Your new friend is:</h5>
+                        <button type="button" class="close redirect" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h1 id="modal-friend-name"></h1>
+                        <img src="#" id="modal-friend-img" alt="Friend's Picture">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary redirect">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -198,12 +223,74 @@
       </div>
     </footer>
 
+<script type="text/javascript">
+
+$("#submit").on("click", function(){
+  console.log("Submit Working!")
+  function validateForm(){
+    let isValid = true;
+    $(".form-control").each(function(){
+      if ($(this).val()=== ""){
+        isValid = false;
+      }
+    });
+    return isValid;
+  }
+
+    if (validateForm()){
+      let userData = {
+        name: $("#name").val(),
+        photo: $("#photo").val(),
+        scores: [
+          $("#q1").val(),
+          $("#q2").val(),
+          $("#q3").val(),
+          $("#q4").val(),
+          $("#q5").val(),
+          $("#q6").val(),
+          $("#q7").val(),
+          $("#q8").val(),
+          $("#q9").val(),
+          $("#q10").val(),
+        ]  
+     };
+
+     let currentURL = window.location.origin;
+     $.post(currentURL + "/api/friends", userData, function(data){
+
+     });
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
+    
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
