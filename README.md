@@ -20,7 +20,9 @@ npm install
 
 # Visuals/Demo
 
-Here is a working version of the application deployed via Heroku
+## Here is a working version of the application deployed via Heroku
+
+https://haunted-witch-43791.herokuapp.com/
 
 # Status
 
